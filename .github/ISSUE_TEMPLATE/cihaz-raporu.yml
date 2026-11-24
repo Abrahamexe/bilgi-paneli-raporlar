@@ -1,0 +1,61 @@
+name: Cihaz raporu
+description: Bir fare, klavye veya kulaklığın test sonucunu gönder.
+title: "[Cihaz] Marka Model"
+labels: ["cihaz-raporu"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ayrıntılar için [README](../blob/main/README.md) dosyasına bakın. En kolay yol uygulamadaki **Cihaz raporu oluştur** menüsüdür.
+  - type: input
+    id: model
+    attributes:
+      label: Marka ve model
+      placeholder: "Örn. Lamzu Atlantis Mini 4K"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Cihaz türü
+      options: [Fare, Klavye, Kulaklık, Diğer]
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Test sırasındaki bağlantı
+      multiple: true
+      options: [Dongle (2.4 GHz), Kablolu, Kablolu (şarj ederken), Bluetooth]
+    validations:
+      required: true
+  - type: input
+    id: vendor
+    attributes:
+      label: Üretici yazılımında görünen değerler
+      description: Pil yüzdesi, şarj durumu ve Hz. Ekran görüntüsünü aşağıya ekleyin.
+      placeholder: "Örn. %72, şarj olmuyor, 4000 Hz"
+    validations:
+      required: true
+  - type: input
+    id: panel
+    attributes:
+      label: Bilgi Paneli'nde görünen değerler
+      placeholder: "Örn. %72, 4000 Hz, Dongle"
+  - type: textarea
+    id: dump
+    attributes:
+      label: Cihaz raporu
+      description: "Bilgi Paneli → sağ tık → Cihaz raporu oluştur. İçerik panoya kopyalanır, buraya yapıştırın. Çok uzunsa Masaüstündeki .md dosyasını forma sürükleyin."
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: capture
+    attributes:
+      label: USB kaydı / web sürücüsü (sadece Grup 1)
+      description: Zip'lenmiş .pcapng dosyasını sürükleyin, saat notlarınızı yazın. Web sürücüsüyse tam adresini yazın.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Ekran görüntüleri ve notlar
